@@ -1,0 +1,12 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+nav ul li {
+  list-style: none;
+  float: left;
+  margin-right: 8px;
+}
+.container {
+  padding-top: 30px;
+}
