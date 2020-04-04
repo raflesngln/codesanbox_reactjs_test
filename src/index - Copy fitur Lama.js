@@ -10,13 +10,11 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 import { PersistGate } from 'redux-persist/integration/react'
 
 import "./styles.css";
-// import IndexProps from "./props_dan_state/index_props";
-// import ListDetails from "./props_dan_state/list_n_detail";
-// import IndexApi from "./crud_api/index";
-// import Myrefs from "./use_ref/Myrefs";
-// import ManageRedux from './use_redux/ManageRedux'
-import Home from './component/home/index'
-import About from './component/about/index'
+import IndexProps from "./props_dan_state/index_props";
+import ListDetails from "./props_dan_state/list_n_detail";
+import IndexApi from "./crud_api/index";
+import Myrefs from "./use_ref/Myrefs";
+import ManageRedux from './use_redux/ManageRedux'
 
 
 import Reducers from './redux/reducer/index'
@@ -58,29 +56,40 @@ class App extends React.Component {
           <nav>
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/">IndexProps</Link>
               </li>
               <li>
-                <Link to="/Home">Home</Link>
+                <Link to="/ListDetails">ListDetails</Link>
               </li>
               <li>
-                <Link to="/About">About</Link>
+                <Link to="/IndexApi">CRUD API</Link>
               </li>
-             
+              <li>
+                <Link to="Myrefs">Refs</Link>
+              </li>
+              <li>
+                <Link to="/reduxPage">Redux</Link>
+              </li>
             </ul>
           </nav>
 
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
-            <Route path="/Home">
-              <Home />
+            <Route path="/ListDetails">
+              <ListDetails />
             </Route>
-            <Route path="/About">
-              <About />
+            <Route path="/IndexApi">
+              <IndexApi />
+            </Route>
+            <Route path="/Myrefs">
+              <Myrefs title="Use Refs" />
+            </Route>
+            <Route path="/reduxPage">
+              <ManageRedux />
             </Route>
             <Route path="/">
-              <Home />
+              <IndexProps />
             </Route>
           </Switch>
         </div>

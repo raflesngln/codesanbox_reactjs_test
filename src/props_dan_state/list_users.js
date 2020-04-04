@@ -60,7 +60,7 @@ class ListUsers extends React.Component {
         <div>
           {this.state.list.map((val, idx) => {
             return (
-              <div>
+              <div key={val.id}>
                 <li onClick={() => this.getDetail(val.id)} key={idx}>{`${
                   val.id
                 } - ${val.nama}-${val.phone}`}</li>

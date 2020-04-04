@@ -16,7 +16,7 @@ class IndexApi extends Component {
       <div className="container">
         <Router>
           <div>
-            <nav2>
+            <nav>
               <ul>
                 <li>
                   <Link to="/Listdata">List data</Link>
@@ -25,7 +25,7 @@ class IndexApi extends Component {
                   <Link to="/Newdata">Add Data</Link>
                 </li>
               </ul>
-            </nav2>
+            </nav>
 
             {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}

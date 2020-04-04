@@ -1,4 +1,12 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux'
+import Spreadpropsandproptypes from "./spreadpropsandproptypes";
+import Userdetails from "./Userdetails";
+
+const mydetail = {
+  country: "Indonesia",
+  city: "JAKARTA"
+};
 
 class Props1 extends Component {
   constructor(props) {
@@ -44,11 +52,22 @@ class Props1 extends Component {
     const result = user.filter(vale => vale.id !== ev).map(res => res);
     console.log(result);
   };
+  gantijudul = () => {
+    var randomdata = Math.floor(Math.random() * 1000) + 1;
+    this.setState({ judul: "judul diganti" + randomdata });
+  };
+
   render() {
     const { getStateParents, hapus, adData } = this;
     const { hobby, users_list } = this.state;
     return (
       <div>
+        <Spreadpropsandproptypes {...mydetail} />
+        <button onClick={this.gantijudul}>ganti judul</button>
+        <h5>
+          {this.state.judul} : {this.props.title}
+        </h5>
+        <h1>{`${this.props.age} - ${this.props.nama}`}</h1>
         <h5>Hello : {this.props.title}</h5>
         <p>
           <button onClick={this.props.talk}>props fungsi</button>
@@ -60,16 +79,16 @@ class Props1 extends Component {
         <div>
           <div>
             <h3>array hobbyss</h3>
-            {hobby.map(val1 => {
-              return <p>{val1}</p>;
+            {hobby.map((val1,idx) => {
+              return <p key={idx}>{val1}</p>;
             })}
           </div>
           <div>
             <h3>array users</h3>
             {users_list.map((val2, idx) => {
               return (
-                <div>
-                  <p key={val2.id}>
+                <div key={val2.id}>
+                  <p>
                     {`${idx} ${val2.nama}`}{" "}
                     <button
                       onClick={() => {
@@ -83,10 +102,19 @@ class Props1 extends Component {
               );
             })}
           </div>
+          <div>
+          <Userdetails listdata={users_list} hapusdata={hapus} />
+        </div>
         </div>
       </div>
     );
   }
 }
 
-export default Props1;
+const mapStateToProps= (state)=>{
+  return{
+    age:state.age,
+    nama:state.nama
+  }
+}
+export default connect(mapStateToProps, null)(Props1)
